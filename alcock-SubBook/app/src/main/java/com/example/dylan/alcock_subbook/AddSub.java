@@ -1,63 +1,50 @@
-
-
-
+/*
+ * Add Sub
+ *
+ * February 5, 2018
+ *
+ * Copyright (c) 2018 Dylan Alcock, CMPUT301, University of Alberta - All Rights Reserved.
+ *  You may use, distribute, or modify this code under terms and conditions of the Code of Student Behaviour at University of Alberta.
+ *  You can find a copy of the license on this project, Otherwise please contact alcock@ualberta.ca
+ */
 
 package com.example.dylan.alcock_subbook;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
-import java.lang.reflect.Type;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.ArrayList;
-import java.util.regex.Pattern;
-
+/**
+ * Purpose:
+ * Activity that gets the user to add a tweet to the sub list.
+ *
+ * Design Rationale:
+ * Having a separate activity for the user to enter the information allowed for the main screen to
+ * be less cluttered and be able to show more subs.
+ *
+ * @author Dylan
+ * @version 1.5
+ * @see Subscription
+ */
 public class AddSub extends AppCompatActivity {
 
-    ArrayList<Subscription> subscriptionList;
-
-    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
-
-    EditText nameTxt;
-    EditText dateTxt;
-    EditText mchrgTxt;
-    EditText commentTxt;
-
-    static SharedPreferences settings;
-
+    /**
+     * Purpose:
+     * Sets the view when Add sub activity is started.
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_sub);
 
-        dateFormat.setLenient(false);
 
-
-        //Bundle bundleObject = getIntent().getExtras();
-        //subscriptionList = (ArrayList<Subscription>) bundleObject.getSerializable("Sub list");
-
-
-        //settings = getSharedPreferences("sub list", MODE_PRIVATE);
-        //final SharedPreferences.Editor editor = settings.edit();
-
-        //subscriptionList = new ArrayList<Subscription>();
-        //loadData();
         final EditText nameTxt = findViewById(R.id.nameText);
         final EditText dateTxt = findViewById(R.id.dateText);
         final EditText mchrgTxt = findViewById(R.id.monchrgText);
@@ -103,23 +90,6 @@ public class AddSub extends AppCompatActivity {
             }
         });
 
-
-
-        // subscriptionList.add(new Subscription(name, date, charge, comment));
-
-        //ListView subListView = (ListView) findViewById(R.id.subList);
-
-        //final ArrayAdapter<Subscription> aa;
-
-        //aa = new ArrayAdapter<Subscription>(this,android.R.layout.simple_list_item_1,subscriptionList);
-        //aa = new FancyAdapter();
-
-        //subscriptionList.setAdapter(aa);
-
-        //Button cancelBtn = findViewById(R.id.cancelBtn)
-        //;
-        //subListView.setAdapter(aa);
-
         Button addSubBtn = findViewById(R.id.addBtn);
 
         addSubBtn.setOnClickListener(new View.OnClickListener() {
@@ -143,25 +113,12 @@ public class AddSub extends AppCompatActivity {
                     return;
                 }
 
-                Subscription newSub;
-
                 String name = nameTxt.getText().toString();
                 String date = dateTxt.getText().toString();
                 double charge = Double.valueOf(mchrgTxt.getText().toString());
                 String comment = commentTxt.getText().toString();
 
-
-
-                //aa.notifyDataSetChanged();
-
-
-                //saveData();
-                //Intent intent = new Intent(this, MainActivity.class);
-                //intent.putExtra("subList", subscriptionList);
-
                 Intent i = new Intent();
-                //Bundle bundle = new Bundle();
-                //bundle.putSerializable("new sub", newSub);
 
                 i.putExtra("Name",name);
                 i.putExtra("Date",date);
@@ -176,11 +133,8 @@ public class AddSub extends AppCompatActivity {
                 commentTxt.setText("");
 
                 finish();
-                //startActivityForResult(i,50);
-
             }
 
         });
-
     }
 }

@@ -1,3 +1,13 @@
+/*
+ * Edit Sub
+ *
+ * February 5, 2018
+ *
+ * Copyright (c) 2018 Dylan Alcock, CMPUT301, University of Alberta - All Rights Reserved.
+ *  You may use, distribute, or modify this code under terms and conditions of the Code of Student Behaviour at University of Alberta.
+ *  You can find a copy of the license on this project, Otherwise please contact alcock@ualberta.ca
+ */
+
 package com.example.dylan.alcock_subbook;
 
 import android.content.Intent;
@@ -8,17 +18,27 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.util.ArrayList;
 
+/**
+ * Purpose:
+ * Activity that gets the user to edit a tweet in the sub list
+ *
+ * Design Rationale:
+ * Having a separate activity where all the subscriptions could be edited was need as the main
+ * activity did not have edit texts to be able to change any of the subscriptions values.
+ *
+ * @author Dylan
+ * @version 1.5
+ * @see Subscription
+ */
 public class EditSub extends AppCompatActivity {
 
-    ArrayList<Subscription> subscriptionList;
-
-    EditText nameTxt;
-    EditText dateTxt;
-    EditText mChrgTxt;
-    EditText commentTxt;
-
+    /**
+     * Purpose:
+     * Sets up the view when the edit sub activity is started
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -130,6 +150,5 @@ public class EditSub extends AppCompatActivity {
             }
 
         });
-
     }
 }
