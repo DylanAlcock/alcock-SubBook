@@ -53,6 +53,46 @@ public class EditSub extends AppCompatActivity {
         mChrgTxt.setText(Double.toString(mCharge));
         commentTxt.setText(comment);
 
+        nameTxt.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (nameTxt.getText().length() > 20){
+                    nameTxt.setError("Name must be 20 characters or less");
+                }
+            }
+        });
+
+        commentTxt.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (commentTxt.getText().length() > 30){
+                    commentTxt.setError("Comment must be 30 characters or less");
+                }
+            }
+        });
+
+        dateTxt.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                // regular expression from vinod
+                // URL: https://stackoverflow.com/questions/22061723/regex-date-validation-for-yyyy-mm-dd
+                if (dateTxt.getText().toString().matches("\\d{4}-(0?[1-9]|1[012])\\-(0?[1-9]|[12][0-9]|3[01])$") == false) {
+                    dateTxt.setError("Date must be in format yyyy-mm-dd");
+                }
+            }
+        });
+
+        mChrgTxt.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (mChrgTxt.getText().toString().indexOf("-") != -1){
+                    mChrgTxt.setError("Monthly charge cannot be negative");
+                } else if (mChrgTxt.getText().toString().matches("\\d+.?\\d*") == false) {
+                    mChrgTxt.setError("Monthly charge needs to be a positive number");
+                }
+            }
+        });
+
 
         // subscriptionList.add(new Subscription(name, date, charge, comment));
 
@@ -74,6 +114,23 @@ public class EditSub extends AppCompatActivity {
         editSubBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                if(nameTxt.getError() != null || nameTxt.getText().length() == 0){
+                    Toast.makeText(getApplicationContext(), "Name has an error or is empty", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                else if(dateTxt.getError() != null || dateTxt.getText().length() == 0){
+                    Toast.makeText(getApplicationContext(), "Date has an error or is empty", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                else if(mChrgTxt.getError() != null || mChrgTxt.getText().length() == 0){
+                    Toast.makeText(getApplicationContext(), "Monthly Charge has an error or is empty", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                else if(commentTxt.getError() != null){
+                    Toast.makeText(getApplicationContext(), "Comment has an error", Toast.LENGTH_LONG).show();
+                    return;
+                }
 
                 String name = nameTxt.getText().toString();
                 String date = dateTxt.getText().toString();

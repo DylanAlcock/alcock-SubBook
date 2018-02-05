@@ -47,7 +47,7 @@ public class SubscriptionListAdapter extends BaseAdapter{
 
         subName.setText(subscriptionArrayList.get(position).getName());
         subDate.setText(subscriptionArrayList.get(position).getDate());
-        subCharge.setText("$" + String.valueOf(subscriptionArrayList.get(position).getCharge()));
+        subCharge.setText("$" + String.format("%.2f", subscriptionArrayList.get(position).getCharge()));
 
         v.setTag(subscriptionArrayList.get(position).getName());
         return v;

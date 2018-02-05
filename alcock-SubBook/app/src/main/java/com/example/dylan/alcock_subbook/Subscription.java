@@ -18,10 +18,7 @@ public class Subscription implements Serializable{
     private String name;
     private String date;
     private double m_charge;
-
     private String comment;
-    //ArrayList<Mood> allmoods = new ArrayList<Mood>();
-
 
     public Subscription(String name, String date, double m_charge, String comment){
         this.name = name;

@@ -149,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
         for(int i=0; i<subscriptionList.size(); i++){
             totalCharge += subscriptionList.get(i).getCharge();
         }
-        totalTextView.setText("$" + Double.toString(totalCharge));
+        totalTextView.setText("$" + String.format("%.2f", totalCharge));
     }
 
 
