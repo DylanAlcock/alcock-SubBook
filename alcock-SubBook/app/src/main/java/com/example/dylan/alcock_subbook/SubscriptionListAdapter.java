@@ -8,9 +8,6 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-/**
- * Created by Dylan on 2018-02-03.
- */
 
 public class SubscriptionListAdapter extends BaseAdapter{
 
@@ -21,7 +18,6 @@ public class SubscriptionListAdapter extends BaseAdapter{
         this.mContext = mContext;
         this.subscriptionArrayList = subscriptionArrayList;
     }
-
 
     @Override
     public int getCount() {

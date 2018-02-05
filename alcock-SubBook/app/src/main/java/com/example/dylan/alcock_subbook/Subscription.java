@@ -65,47 +65,4 @@ public class Subscription implements Serializable{
         this.comment = comment;
     }
 
-    public void addSub(String name, Date date, double m_charge)
-            throws NameTooLong,NegativeMonthlyCharge{
-        if(name.length() > 20){
-            // throw an error
-            throw new NameTooLong();
-        }
-
-        if(m_charge < 0){
-            // throw an error
-            throw new NegativeMonthlyCharge();
-        }
-        String simple_date = new SimpleDateFormat("YYYY-MM-DD").format(date);
-
-        this.name = name;
-        this.date = simple_date;
-        this.m_charge = m_charge;
-    }
-
-    public void addSub(String name, Date date, int m_charge, String comment)
-            throws NameTooLong,CommentTooLong,NegativeMonthlyCharge{
-        if(name.length() > 20){
-            // throw an error
-            throw new NameTooLong();
-        }
-
-        if(comment.length() > 30){
-            // throw an error
-            throw new CommentTooLong();
-        }
-
-        if(m_charge < 0){
-            // throw an error
-            throw new NegativeMonthlyCharge();
-        }
-
-        String simple_date = new SimpleDateFormat("YYYY-MM-DD").format(date);
-
-        this.name = name;
-        this.date = simple_date;
-        this.m_charge = m_charge;
-        this.comment = comment;
-    }
-
 }

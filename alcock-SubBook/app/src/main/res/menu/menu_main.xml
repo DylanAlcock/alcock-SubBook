@@ -8,4 +8,7 @@
     <item
         android:id="@+id/deleteMenu"
         android:title="Delete Subscription" />
+    <item
+        android:id="@+id/detailsMenu"
+        android:title="Details" />
 </menu>
