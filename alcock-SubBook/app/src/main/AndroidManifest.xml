@@ -19,9 +19,11 @@
         <activity
             android:name=".AddSub"
             android:parentActivityName=".MainActivity" />
-
         <activity
             android:name=".EditSub"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".SubDetails"
             android:parentActivityName=".MainActivity" />
     </application>
 

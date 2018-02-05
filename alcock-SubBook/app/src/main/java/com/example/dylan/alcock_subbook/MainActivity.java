@@ -67,23 +67,6 @@ public class MainActivity extends AppCompatActivity {
 
         setTotalCharge();
 
-
-
-
-        //aa = new ArrayAdapter<Subscription>(this,R.layout.list_item, R.id.txtSub,subscriptionList);
-        //subListView.setAdapter(aa);
-        /*
-        subListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                // show edit box
-                showEditBox(subscriptionList.get(position),position);
-                //Toast.makeText(getApplicationContext(), "Clicked name:"+view.getTag(), Toast.LENGTH_SHORT).show();
-            }
-        });
-        */
-
-
         Button addSubBtn = (Button) findViewById(R.id.addSubBtn);
         addSubBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -128,6 +111,16 @@ public class MainActivity extends AppCompatActivity {
                 //Toast.makeText(getApplicationContext(), "Subscription NOT Edited", Toast.LENGTH_LONG).show();
                 return true;
 
+            case R.id.detailsMenu:
+                Intent dIntent = new Intent(MainActivity.this, SubDetails.class);
+
+                dIntent.putExtra("Name",subscriptionList.get(info.position).getName());
+                dIntent.putExtra("Date",subscriptionList.get(info.position).getDate());
+                dIntent.putExtra("Monthly Charge",subscriptionList.get(info.position).getCharge());
+                dIntent.putExtra("Comment",subscriptionList.get(info.position).getComment());
+                startActivity(dIntent);
+                return true;
+
             default:
                 return super.onContextItemSelected(item);
         }
@@ -152,18 +145,6 @@ public class MainActivity extends AppCompatActivity {
         totalTextView.setText("$" + String.format("%.2f", totalCharge));
     }
 
-
-/*
-    @Override
-    protected void onResume() {
-        super.onResume();
-        subscriptionList = new ArrayList<Subscription>();
-        loadData();
-        adapter.notifyDataSetChanged();
-        subListView.setAdapter(adapter);
-        setTotalCharge();
-    }
-*/
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -209,11 +190,13 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
+
     @Override
     protected void onPause(){
         super.onPause();
         saveData();
     }
+
 
     private void saveData() {
         SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
@@ -223,6 +206,7 @@ public class MainActivity extends AppCompatActivity {
         editor.putString("sub list", json);
         editor.apply();
     }
+
 
     private void loadData() {
         SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
