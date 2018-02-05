@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">alcock-SubBook</string>
+    <string name="addsub_button">Add Subscrition</string>
+    <string name="deletesub_button">Delete Subscription</string>
+    <string name="listsubs_button">List Subscriptions</string>
+    <string name="editsub_button">Edit Subscription</string>
+    <string name="add_button">Add</string>
+    <string name="delete_button">Delete</string>
+    <string name="name_text">Name</string>
+    <string name="date_text">Date(yyyy-mm-dd)</string>
+    <string name="monthly_charge_text">Monthly Charge</string>
+    <string name="comment_text">Comment</string>
+    <string name="cancel_button">Cancel</string>
+    <string name="title_activity_edit_sub">EditSub</string>
+</resources>
